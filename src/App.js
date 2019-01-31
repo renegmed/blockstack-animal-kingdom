@@ -26,7 +26,10 @@ class App extends Component {
   }
 
   render() {
-    return (
+    console.log("--- App.js render() ---")
+    console.log("    IsUserSignedIn:", this.userSession.isUserSignedIn());
+    
+    return ( 
       <main role="main">
           {this.userSession.isUserSignedIn() ?
             <SignedIn />

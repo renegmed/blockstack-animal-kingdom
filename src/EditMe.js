@@ -29,6 +29,9 @@ class EditMe extends Component {
   }
 
   render() {
+    console.log("+++ EditMe.js render() ++++")
+    console.log("    me: ", this.props.me)
+
     const me = this.props.me
     let myAnimal = null
     let myTerritory = null
@@ -36,10 +39,18 @@ class EditMe extends Component {
       myAnimal = this.props.me.animal
       myTerritory = this.props.me.territory
     }
+
     const selectedAnimal = this.state.selectedAnimal
     const selectedTerritory = this.state.selectedTerritory
     const completed = selectedAnimal && selectedTerritory
     const username = this.props.username
+
+    console.log("    myAnimal: ", myAnimal)
+    console.log("    myTerritory: ", myTerritory)
+    console.log("    selectedAnimal: ", selectedAnimal)
+    console.log("    selectedTerritory: ", selectedTerritory)
+    console.log("    completed: ", completed)
+    console.log("    username: ", username)
 
     return (
       <div className="EditMe container">

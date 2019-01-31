@@ -14,7 +14,8 @@ class SignedIn extends Component {
 
   constructor(props) {
     super(props)
-    this.userSession = new UserSession({ appConfig })
+    //  appConfig = new AppConfig(['store_write', 'publish_data'])
+    this.userSession = new UserSession({ appConfig })  
     this.state = {
       me: {},
       savingMe: false,
@@ -31,12 +32,22 @@ class SignedIn extends Component {
     this.loadMe()
   }
 
+  /*
+    Get user authentication data from Gaia, Blockstack data storage hub
+  */
   loadMe() {
+    console.log("--- SignedIn.js loadMe ----")
     const options = { decrypt: false }
-    this.userSession.getFile(ME_FILENAME, options)
+    this.userSession.getFile(ME_FILENAME, options)  // ME_FILENAME = 'me.json'
     .then((content) => {
       if(content) {
+       
+        console.log("    content\n", content)
+
         const me = JSON.parse(content)
+
+        console.log("    me\n", me)
+
         this.setState({me, redirectToMe: false})
       } else {
         const me = null
@@ -46,12 +57,19 @@ class SignedIn extends Component {
     })
   }
 
+  /*
+    Put user authentication data to Gaia, Blockstack data storage hub
+  */
   saveMe(me) {
+    console.log("--- SignedIn.js saveMe() ----") 
     this.setState({me, savingMe: true})
     const options = { encrypt: false }
+    console.log("     before userSession.putFile() state:\n", this.state, 
+                "     options:\n", options)
     this.userSession.putFile(ME_FILENAME, JSON.stringify(me), options)
     .finally(() => {
       this.setState({savingMe: false})
+      console.log("     after userSession.putFile()  state:\n", this.state)
     })
   }
 
@@ -62,9 +80,14 @@ class SignedIn extends Component {
   }
 
   render() {
+    console.log("--- SignedIn.js render() ----") 
     const username = this.userSession.loadUserData().username
     const me = this.state.me
     const redirectToMe = this.state.redirectToMe
+
+    console.log("    username:", username, "\n    me:", me, "\n    redirectToMe", redirectToMe)
+    console.log("    window.location.pathname:", window.location.pathname );
+
     if(redirectToMe) {
       // User hasn't configured her animal
       if(window.location.pathname !== '/me') {

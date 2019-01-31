@@ -72,10 +72,10 @@ class OtherKingdoms extends Component {
             <div
               className="list-group-item list-group-item-action flex-column align-items-start"
             >
-              <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">Loading other kingdoms...</h5>
+              <div className="d-flex w-100 justify-content-between">
+                <h5 className="mb-1">Loading other kingdoms...</h5>
               </div>
-              <p class="mb-1">&nbsp;</p>
+              <p className="mb-1">&nbsp;</p>
             </div>
             :
             <div>
@@ -91,10 +91,10 @@ class OtherKingdoms extends Component {
                     className="list-group-item list-group-item-action flex-column align-items-start"
                     key={index}
                   >
-                    <div class="d-flex w-100 justify-content-between">
-                      <h5 class="mb-1">{ kingdom.ruler.username }'s kingdom can't be reached</h5>
+                    <div className="d-flex w-100 justify-content-between">
+                      <h5 className="mb-1">{ kingdom.ruler.username }'s kingdom can't be reached</h5>
                     </div>
-                    <p class="mb-1">Is the planet { planet } under siege?</p>
+                    <p className="mb-1">Is the planet { planet } under siege?</p>
                   </div>
                 )
               } else {
@@ -104,11 +104,11 @@ class OtherKingdoms extends Component {
                     to={`/kingdom/${protocol}/${hostname}/${kingdom.ruler.username}`}
                     key={index}
                   >
-                    <div class="d-flex w-100 justify-content-between">
-                      <h5 class="mb-1">{ kingdom.ruler.username } the { animal.name }'s kingdom</h5>
-                      <span class="badge badge-primary badge-pill" title="Subjects">{ kingdom.subjects.length }</span>
+                    <div className="d-flex w-100 justify-content-between">
+                      <h5 className="mb-1">{ kingdom.ruler.username } the { animal.name }'s kingdom</h5>
+                      <span className="badge badge-primary badge-pill" title="Subjects">{ kingdom.subjects.length }</span>
                     </div>
-                    <p class="mb-1">From planet { planet }</p>
+                    <p className="mb-1">From planet { planet }</p>
                   </Link>
                 )
               }

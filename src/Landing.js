@@ -16,6 +16,7 @@ class Landing extends Component {
   }
 
   render() {
+    console.log("--- Landing.js render() ----")
     return (
       <div className="Landing">
         <div className="form-signin">
